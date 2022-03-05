@@ -1,14 +1,24 @@
 
 export class Pessoa {
-    nome: string;
-    telefone: string;
-    email: string;
+    private nome: string;
+    private telefone: string;
+    private email: string;
     
     constructor(nome: string, telefone: string, email: string) {
 		this.nome = nome;
         this.telefone = telefone;
         this.email = email;
 	}
+
+    getNome(): string{
+        return this.nome;
+    }
+    getTelefone(): string{
+        return this.telefone;
+    }
+    getEmail(): string{
+        return this.email;
+    }
 
     isEmailValid<bool>(){  
         var regex = new RegExp('/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i'); 

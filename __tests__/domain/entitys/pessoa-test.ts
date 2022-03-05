@@ -12,9 +12,12 @@ import { Pessoa } from '../../../src/domain/entitys/pessoa';
 
       let pessoa = new Pessoa("caio", "27988860342", "caiotagb@gmail.com" );
 
-      expect(pessoa.nome).toBe("caio");
-      expect(pessoa.telefone).toBe("27988860342");
-      expect(pessoa.email).toBe("caiotagb@gmail.com");
+      expect(pessoa.getNome()).toBe("caio");
+      expect(pessoa.getTelefone()).toBe("27988860342");
+      expect(pessoa.getEmail()).toBe("caiotagb@gmail.com");
+
+     
+
  });
 
  test('teste função isEmailValid', async () => {
