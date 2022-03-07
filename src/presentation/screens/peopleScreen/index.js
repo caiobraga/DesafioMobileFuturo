@@ -1,3 +1,3 @@
-import PeopleScreen from "./peopleScreen";
 
-export default PeopleScreen;
+
+export {default as PeopleScreen} from "./peopleScreen.js";

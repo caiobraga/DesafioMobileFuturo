@@ -1,13 +1,26 @@
+
+
 import React from 'react';
 
-import { View, Button, Text } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Routes from './src/presentation/routes/index';
 
 
-const App = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>About</Text>
-  </View>
-);
+
+
+const Drawer = createDrawerNavigator();
+const App = () => {
+  return (
+    
+   <Routes />
+   
+    
+  );
+};
+  
+ 
+  
+
 
 
 export default App;

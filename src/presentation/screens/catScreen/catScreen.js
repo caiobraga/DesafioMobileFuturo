@@ -3,18 +3,16 @@ import React from 'react';
 import { View, Button, Text } from 'react-native';
 
 
-const PeopleScreen = () => {
- return(
+const CatScreen = () => {
+  return (
 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-  <Text>People</Text>
-</View>
- );
+    <Text>cat</Text>
+  </View>
+  );
 };
 
 
+  
 
 
-
-
-export default PeopleScreen;
-
+export default CatScreen;
