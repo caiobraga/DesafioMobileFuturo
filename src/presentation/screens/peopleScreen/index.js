@@ -1,3 +1,3 @@
 
 
-export {default as PeopleScreen} from "./peopleScreen.js";
+export {default as PeopleScreen} from "./presenterPeopleScreen.js";

@@ -1,2 +1,2 @@
 
-export {default as CatScreen} from "./catScreen.js";
+export {default as CatScreen} from "./presenterCatScreen.js";

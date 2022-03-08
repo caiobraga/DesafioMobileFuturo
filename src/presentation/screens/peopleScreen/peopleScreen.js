@@ -3,10 +3,10 @@ import React from 'react';
 import { View, Button, Text } from 'react-native';
 
 
-const PeopleScreen = () => {
+const PeopleScreen = (props) => {
  return(
 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-  <Text>People</Text>
+  <Text>pessoa : { props.viewModel.nome }</Text>
 </View>
  );
 };
