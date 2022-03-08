@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 
 import ViewModelPeopleScreen from "./viewModelPeopleScreen"
 import  PeopleScreen  from './peopleScreen';
+import AsyncSnapshot from '../utils/asyncSnapshot';
 
 
-const BlocPeopleScreen = (props) => {
+const BlocPeopleScreen = () => {
 
-    const [viewModel, setViewModel] = useState(props.viewModel);
+    const [viewModel, setViewModel] = useState(new AsyncSnapshot(new ViewModelPeopleScreen("CAIO","caio","caio"), null));
 
 
 

@@ -1,7 +1,7 @@
 import {GatoRepository} from "../../infra/repositories/gatoRepository"
 import { Gato } from "../entitys/gato";
 
-class UseCaseGerarGato {
+export default class UseCaseGerarGato {
     async action(){
         let gatoRepository = new GatoRepository();
 

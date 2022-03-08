@@ -13,8 +13,7 @@ export class GatoRepository {
         let dao = new GatoDao();
         let Json = await dao.get();
 
-        this.GatoModel = new GatoModel().getGatoModelFromJson(Json);
-
+        this.GatoModel = new GatoModel().getGatoModelFromJson(JSON.stringify(Json[0]));
         return this.GatoModel;
     }
 }
