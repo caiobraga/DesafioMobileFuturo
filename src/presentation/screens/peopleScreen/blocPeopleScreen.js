@@ -13,21 +13,24 @@ const BlocPeopleScreen = () => {
 
     class actions{
          changeNameText(text){
-
+          setViewModel(new AsyncSnapshot(new ViewModelPeopleScreen(text,viewModel.getData().telefone,viewModel.getData().email), null, false));
         }
     
          changeEmailText(text){
-    
+          setViewModel(new AsyncSnapshot(new ViewModelPeopleScreen(viewModel.getData().nome,viewModel.getData().telefone,text), null, false));
         }
     
          changeTelefoneText(text){
-    
+          setViewModel(new AsyncSnapshot(new ViewModelPeopleScreen(viewModel.getData().nome,text,viewModel.getData().email), null, false));
+        }
+        savePeople(){
+          
         }
       }
 
     
   
-    return (<PeopleScreen actions={actions} viewModel={viewModel}/>);
+    return (<PeopleScreen actions={new actions} viewModel={viewModel}/>);
   }
 
   export default BlocPeopleScreen;
