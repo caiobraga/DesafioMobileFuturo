@@ -7,7 +7,7 @@ import AsyncSnapshot from '../utils/asyncSnapshot';
 
 const BlocPeopleScreen = () => {
 
-    const [viewModel, setViewModel] = useState(new AsyncSnapshot(new ViewModelPeopleScreen("CAIO","caio","caio"), null));
+    const [viewModel, setViewModel] = useState(new AsyncSnapshot(new ViewModelPeopleScreen("","",""), null, false));
 
 
 

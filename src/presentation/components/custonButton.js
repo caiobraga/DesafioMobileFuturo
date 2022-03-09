@@ -1,41 +1,47 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import CustonText from './custonText';
 
 
 
 
-const CustonButton = ({pressable, title, onPress}) => {
-  
+
+const CustonButton = ({color, size, title, onPress}) => {
+    
+    const typografy = size? (size == "sm")? 'btsm' : (size == "md")? 'btmd' : 'btlg' :'btlg';
+
+    
+  const styles = StyleSheet.create({
+
+    Button:{
+        backgroundColor: color,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingHorizontal: 22,
+        paddingVertical: 18,
+        minHeight: 37,
+        borderRadius: 5,
+    },
+
+    
+
+
+  });
+
+
 
     return (
-        pressable?
-            <Button
-            title={title}
-            onPress={onPress}
-            styles={
-                styles.pressableButton
-            }
-            />
-        :
-            <Button
-            title={title}
-            onPress={onPress}
-            styles={styles.unpressableButton}
-            disabled={true}
-            />
+        <TouchableOpacity onPress={onPress} style={styles.Button}>
+            <CustonText type={typografy}>
+                {title}
+            </CustonText>
+        </TouchableOpacity>
+        
     );
   }
 
-  const styles = StyleSheet.create({
-    pressableButton: {
-
-    },
-
-    unpressableButton: {
-
-    }
-
-  });
 
 
   export default CustonButton;

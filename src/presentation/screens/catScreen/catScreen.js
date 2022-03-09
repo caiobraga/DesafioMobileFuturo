@@ -1,23 +1,62 @@
 import React from 'react';
 
-import { View, Button, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import CustonButton from "../../components/custonButton";
 import CustonImage from "../../components/custonImage";
+import CustonText from "../../components/custonText";
+
+import Utils from "../../UI/utils";
+import  Colors  from '../../UI/colors'
 
 const CatScreen = (props) => {
+
+const utils = new Utils();
+const width = utils.windowWidth * 0.9 ;
+const height = utils.windowHeight*0.40;
   return (
-<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      
-      <CustonImage isLoading={!props.viewModel.isLoading()} hasData={props.viewModel.hasData()} source={{
-          uri:  props.viewModel.hasData()? props.viewModel.getData().url : "",
+
+      <View style={styles.container}>
+        <CustonText type={"dis4"}>Gatos</CustonText>
+        {
+          !props.viewModel.isLoading() 
+          ?
+           <CustonImage source={{
+            uri: 'https://reactnative.dev/img/tiny_logo.png',
+          }} width={width} height={height}/>
+          :
+          props.viewModel.hasData() 
+            ?
+              <CustonImage source={{
+                uri: props.viewModel.getData().url,
+              }} width={width} height={height}/>
+            :
+            <CustonImage source={{
+              uri: 'https://reactnative.dev/img/tiny_logo.png',
+            }} width={width} height={height}/>
         }
-        } />
-      <CustonButton pressable={props.viewModel.isLoading()} title={"Mais um!"} onPress={()=>{props.actions.setAnotherCat()}}/>
-    <Text>cat</Text>
-  </View>
+        <View style={styles.buttonContainer}>
+        <CustonButton color={new Colors('default').primary } title={"Mais um!"} onPress={()=>{props.actions.setAnotherCat()}}/>
+        </View>
+      </View>
   );
 };
+
+const styles = StyleSheet.create({
+
+container: {
+  flexDirection: 'column',
+  height: "100%",
+  width: "100%",
+  padding: 20,
+  alignContent: 'center'
+},
+
+buttonContainer:{
+  padding: 8
+}
+
+});
 
 
 

@@ -1,35 +1,22 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Dimensions } from 'react-native';
 
 
-const styles = StyleSheet.create({
+
+
+const CustonImage = ({source, width, height}) => {
+  
+  const styles = StyleSheet.create({
 
     logo: {
-      width: 66,
-      height: 58,
+      width: width,
+      height: height,
+      borderRadius: 0
     },
   });
-
-const CustonImage = ({isLoading, hasData, source}) => {
-  
-
     return (
-        isLoading ?
-        <Image
-        style={styles.logo}
-        source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }}
-      /> :
-      hasData ?
        <Image style={styles.logo}
           source={source}
-      /> :
-      <Image
-        style={styles.logo}
-        source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }}
       />
     );
   }
