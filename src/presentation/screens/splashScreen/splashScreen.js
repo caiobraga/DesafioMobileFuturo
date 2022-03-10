@@ -10,7 +10,7 @@ import CustonImage from "../../components/custonImage";
 import CustonText from "../../components/custonText";
 
 import Utils from "../../UI/utils";
-const CatScreen = (props) => {
+const SplashScreen = (props) => {
 
 const utils = new Utils();
 const width = utils.windowWidth * 0.9 ;
@@ -20,23 +20,11 @@ const { colors } = useTheme();
   return (
 
       <View style={{backgroundColor: colors.primary}, styles.container}>
-      
-        {
-          props.viewModel.isLoading 
-          ?
-           <CustonImage source={{
-            uri: 'https://reactnative.dev/img/tiny_logo.png',
-          }} width={width} height={height}/>
-          :
-          <CustonImage source={{
-            uri: props.viewModel.url,
-          }} width={width} height={height}/>
-        }
+      <View style={styles.textContainer}>
+           <CustonText type={'dis4'}>Bem vindo ao desafio futuro</CustonText>
+        </View>
         <View style={styles.buttonContainer}>
-        {
-          !props.viewModel.isLoading? <CustonButton color={ colors.primary } title={"Mais um!"} onPress={()=>{props.actions.setAnotherCat()}}/> : 
-          <CustonButton color={colors.disabled } title={"Mais um!"} onPress={()=>{}}/>
-        }
+           <CustonButton color={ colors.primary } title={"Entrar"} onPress={()=>{props.actions.nextPage()}}/>
         </View>
       </View>
   );
@@ -45,15 +33,29 @@ const { colors } = useTheme();
 const styles = StyleSheet.create({
 
 container: {
+  
   flexDirection: 'column',
   height: "100%",
-  width: "100%",
+  width: "100%",  
   padding: 20,
-  alignContent: 'center'
+  alignContent: 'center',
+  justifyContent:'space-evenly',
+  alignItems:'center'
+},
+textContainer:{
+  alignContent: 'center',
+  justifyContent: 'center',
+  alignItems:'center',
+  flex: 1/3,
+
 },
 
 buttonContainer:{
-  padding: 8
+  padding: 8,
+  flex: 2/3,
+  justifyContent: 'center',
+  height: "100%",
+  width: "100%", 
 }
 
 });
@@ -64,4 +66,4 @@ buttonContainer:{
   
 
 
-export default CatScreen;
+export default SplashScreen;
