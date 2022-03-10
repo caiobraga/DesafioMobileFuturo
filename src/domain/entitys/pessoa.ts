@@ -22,7 +22,7 @@ export class Pessoa {
     }
 
     isEmailValid<bool>(){  
-        var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ 
+        var regex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/, 'g'); 
 
         /*
 
@@ -32,7 +32,7 @@ export class Pessoa {
     }
 
     isTelefoneValid<bool>(){
-        var regex = new RegExp('^[1-9]{2}[9]{0,1}[6-9]{1}[0-9]{3}[0-9]{4}$');
+        var regex = new RegExp('^[1-9]{2}[9]{0,1}[6-9]{1}[0-9]{3}[0-9]{4}$', 'g');
 
         /*xx xxxxx-xxxx - parenteses e ifens opcionais */
 
