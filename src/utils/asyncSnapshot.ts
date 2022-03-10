@@ -6,14 +6,12 @@ export default class AsyncSnapshot {
   private _error: Error;
   private _hasData: boolean;
   private _hasError: boolean;
-  private _isLoading: boolean;
   
-  constructor(data: any, error: Error, isLoading?: boolean) {
+  constructor(data: any, error: Error) {
       this._data = data;
       this._error = error;
       this._hasData = data ? true : false;
       this._hasError = error ? true : false;
-      this._isLoading = isLoading? false : true;
     }
   
     getData() {
@@ -30,9 +28,5 @@ export default class AsyncSnapshot {
   
     hasError() {
       return this._hasError;
-    }
-
-    isLoading(){
-      return this._isLoading;
     }
   }

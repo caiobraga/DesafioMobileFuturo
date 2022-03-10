@@ -2,28 +2,32 @@ import React, { useState } from 'react';
 
 import  CatScreen  from './catScreen';
 import ViewModelCatScreen from './viewModelCatScreen';
-import AsyncSnapshot from '../utils/asyncSnapshot';
 
 import UseCaseGerarGato from "../../../domain/useCases/useCaseGerarGato";
-import { Error } from '../utils/error';
+
+import {Error} from "../../../utils/error";
 
 const BlocCatScreen = () => {
 
-    const [viewModel, setViewModel] = useState(new AsyncSnapshot(null, null, false));
+    const [viewModel, setViewModel] = useState(new ViewModelCatScreen(null, null, null));
 
 
     
     class actions{
       async setAnotherCat(){
 
-        setViewModel(new AsyncSnapshot(null, null, true));
-
-        let gato = await new UseCaseGerarGato().action();
-        console.log("gato:" + gato.url);
-        if(gato.url != null){
-          setViewModel(new AsyncSnapshot(new ViewModelCatScreen(gato.url), null, false));
+        setViewModel(new ViewModelCatScreen(null, true, null));
+        let promise = await new UseCaseGerarGato().action();
+        console.log(promise);
+        if(promise.hasData()){
+          setViewModel(new ViewModelCatScreen(promise.getData(), false, null));
         }else{
-          setViewModel(new AsyncSnapshot(new ViewModelCatScreen(gato.url), new Error("1", "Gato Não encontrado"), false));
+          if(promise.hasError()){
+            setViewModel(new ViewModelCatScreen(null, false, promise.getError() ));
+          }else{
+            setViewModel(new ViewModelCatScreen(null, false, new Error("Um erro inesperado aconteceu", "") ));
+          }
+         
         }
       }
     }
@@ -31,7 +35,7 @@ const BlocCatScreen = () => {
 
    
   
-    return (<CatScreen actions={new actions} viewModel={viewModel}/>);
+    return (<CatScreen actions={new actions()} viewModel={viewModel}/>);
   }
 
   export default BlocCatScreen;

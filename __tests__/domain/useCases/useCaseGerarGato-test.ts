@@ -7,7 +7,6 @@ test('teste useCase declaration', async () => {
 
     let gato = await new UseCaseGerarGato().action();
 
-    console.log(gato)
-    expect(gato.getUrl() != null).toBe(true);
+    expect(gato.getData().url != null).toBe(true);
 
 });

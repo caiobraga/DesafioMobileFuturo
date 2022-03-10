@@ -19,24 +19,21 @@ const height = utils.windowHeight*0.40;
       <View style={styles.container}>
         <CustonText type={"dis4"}>Gatos</CustonText>
         {
-          !props.viewModel.isLoading() 
+          props.viewModel.isLoading 
           ?
            <CustonImage source={{
             uri: 'https://reactnative.dev/img/tiny_logo.png',
           }} width={width} height={height}/>
           :
-          props.viewModel.hasData() 
-            ?
-              <CustonImage source={{
-                uri: props.viewModel.getData().url,
-              }} width={width} height={height}/>
-            :
-            <CustonImage source={{
-              uri: 'https://reactnative.dev/img/tiny_logo.png',
-            }} width={width} height={height}/>
+          <CustonImage source={{
+            uri: props.viewModel.url,
+          }} width={width} height={height}/>
         }
         <View style={styles.buttonContainer}>
-        <CustonButton color={new Colors('default').primary } title={"Mais um!"} onPress={()=>{props.actions.setAnotherCat()}}/>
+        {
+          !props.viewModel.isLoading? <CustonButton color={new Colors('default').primary } title={"Mais um!"} onPress={()=>{props.actions.setAnotherCat()}}/> : 
+          <CustonButton color={new Colors('disabled').primary } title={"Mais um!"} onPress={()=>{}}/>
+        }
         </View>
       </View>
   );
