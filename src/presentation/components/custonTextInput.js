@@ -18,11 +18,14 @@ const CustonTextInput = ({label, onChangeText, text, error, placeholder, descrip
     lineHeight: typografy.lineHeight,
     color: typografy.color,
     },
+    TextInputContainer:{
+      width:'100%'
+    }
   });
 
     return (
      
-      <View>
+      <View style={styles.TextInputContainer}>
       <Text style={{
         color: color
       }}>{title? title: ""}</Text>

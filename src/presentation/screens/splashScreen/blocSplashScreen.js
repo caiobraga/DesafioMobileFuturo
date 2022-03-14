@@ -9,7 +9,7 @@ const BlocSplashScreen = ({navigation}) => {
     class actions{
       async nextPage(){
 
-         navigation.push('Home');
+         navigation.push('Gato');
         }
       
     }

@@ -13,10 +13,12 @@ export class GatoRepository {
     
    async get() : Promise<any> {
 
-         let dao = new GatoDao();
+        let dao = new GatoDao();
         let Json = await dao.get();
 
+
+
         this.GatoModel = new GatoModel().getGatoModelFromJson(JSON.stringify(Json[0]));
-       
+        
     }
 }

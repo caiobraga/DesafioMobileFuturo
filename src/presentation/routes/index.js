@@ -1,36 +1,58 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, useDrawerStatus } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import {PeopleScreen} from "../screens/peopleScreen";
 import {CatScreen} from "../screens/catScreen";
 import { SplashScreen } from '../screens/splashScreen';
-import { DrawerContent } from './drawerContent';
+import { DrawerContent } from './drawerContentCat';
 import Typografy from '../UI/typografy';
 import CustonText from '../components/custonText';
 import Colors from '../UI/colors';
+import Utils from "../UI/utils";
+
+
+import {DrawerContentCat} from "./drawerContentCat"
+import DrawerScreenChangeRoute from "./drawerScreenChangeRoute"
 
 const Drawer = createDrawerNavigator();
 
+
 const Stack = createStackNavigator();
+
+const utils = new Utils();
+
 const Home = () => {
+
+  
   return (
-    <Drawer.Navigator drawerContent={props=><DrawerContent {...props}/>} initialRouteName="Gato">
-    <Drawer.Screen name="Gato" component={CatScreen} options={({
-     headerTitle: ()=>{return <CustonText type={'dis4'}>Gato</CustonText>},
-     headerTintColor: new Colors().primary,
+        <Drawer.Navigator
+    defaultStatus='closed'
     
-     }
-     )}
+    screenOptions={{
+      drawerType: 'back',
+      drawerPosition:'left',
+      headerShown:false,
+      swipeEnabled:true,
+
+      drawerStyle:{
+        width: 200,
+      },
+      sceneContainerStyle:{
+        left:utils.left,
+      }
+      
+    }} drawerContent={props=><DrawerScreenChangeRoute {...props}/>} initialRouteName="Gato">
+    <Drawer.Screen name="Gato"   component={CatScreen} options={({
+     headerTitle: ()=>{},
+    })}
      />
-     <Drawer.Screen name="Pessoa" component={PeopleScreen} 
-     options={({ 
-       headerTitle: ()=>{return <CustonText type={'dis4'}>Pessoa</CustonText>} ,
-       headerTintColor: new Colors().primary,
-       })}
+      <Drawer.Screen name="Pessoa"   component={PeopleScreen} options={({
+     headerTitle: ()=>{},
+    })}
      />
    </Drawer.Navigator>
   );
@@ -45,11 +67,12 @@ const Routes = () => {
       headerShown:false
     })}
     />
-    <Stack.Screen name="Home" component={Home} 
+    <Stack.Screen name="Gato" component={Home} 
     options={({
       headerShown:false
     })}
     />
+
     </Stack.Navigator>
 
   );

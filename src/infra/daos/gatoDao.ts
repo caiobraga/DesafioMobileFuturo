@@ -4,7 +4,11 @@ export class GatoDao {
     
     async get(): Promise<any> {
       const resposta = await fetch('https://api.thecatapi.com/v1/images/search')
-      .then( (resposta) => {return resposta.json()});
+      .then( (resposta) => {return resposta.json()}).catch(
+        (error)=>{
+          return error;
+        }
+      );
 
       return resposta;
     }
